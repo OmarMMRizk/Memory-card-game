@@ -7,8 +7,8 @@ const gameCards = [
     { id: 6, src: 'assets/Game cards/princess.png', name:"Princess" },
     { id: 7, src: 'assets/Game cards/superloser.png', name:"Superloser" },
     { id: 8, src: 'assets/Game cards/tine.png', name:"Tine" },
-    { id: 9, src: 'assets/Game cards/tine.png', name:"Tine" },
-    { id: 10, src: 'assets/Game cards/tine.png', name:"Tine" },
+    { id: 9, src: 'assets/Game cards/coin.png', name:"Coin" },
+    { id: 10, src: 'assets/Game cards/egg.png', name:"Egg" },
 ]
 
 
