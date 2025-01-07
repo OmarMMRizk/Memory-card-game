@@ -44,3 +44,14 @@ levelBtn.forEach((btn) => {
         startGame(e.target.value);
     })
 })
+
+const audioOfTheGame =document.querySelectorAll('audio');
+const valumeControler = document.getElementById('sound-valume');
+
+valumeControler.addEventListener('input',()=>{
+const volume = valumeControler.value/100;
+    audioOfTheGame.forEach(audio=>{
+        audio.volume = volume;
+    })
+}
+)
