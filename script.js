@@ -1,4 +1,3 @@
-
 const gameCards = [
     { id: 1, src: 'assets/Game cards/dragon.png', name:"Dragon" },
     { id: 2, src: 'assets/Game cards/Flower.png', name:"Flower" },
@@ -10,12 +9,31 @@ const gameCards = [
     { id: 8, src: 'assets/Game cards/tine.png', name:"Tine" },
     { id: 9, src: 'assets/Game cards/coin.png', name:"Coin" },
     { id: 10, src: 'assets/Game cards/egg.png', name:"Egg" },
-]
+];
 
 let flippedCards = [];
 let matchedCards = [];
 let moves = 0;
 let timer;
+let seconds = 0;
+
+const updateTimerDisplay = () => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const formattedTime = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    document.getElementById('time').textContent = formattedTime;
+};
+
+const startTimer = () => {
+    timer = setInterval(() => {
+        seconds++;
+        updateTimerDisplay();
+    }, 1000);
+};
+
+const stopTimer = () => {
+    clearInterval(timer);
+};
 
 const startGame = (level) => {
     let cardNum;
@@ -45,12 +63,20 @@ const startGame = (level) => {
 
     const allCards = document.querySelectorAll('.card');
     allCards.forEach((card) => card.addEventListener('click', handleCardClick));
-
-
-}
+    
+    // Reset everything when starting a new game
+    flippedCards = [];
+    matchedCards = [];
+    moves = 0;
+    seconds = 0;
+    updateTimerDisplay();
+    document.getElementById('moves').textContent = `Moves: ${moves}`;
+    
+    //Start Timer
+    startTimer();
+};
 
 const handleCardClick = (event) => {
-    //play flip sound
     const clickedCard = event.target.closest('.card');
     if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) {
         return;
@@ -66,9 +92,9 @@ const handleCardClick = (event) => {
         if (firstCard.dataset.id === secondCard.dataset.id) {
             matchedCards.push(firstCard, secondCard);
             flippedCards = [];
-            //play match sound
             if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
-                alert(`Congratulations! You won in ${moves} moves and ${time} seconds.`);
+                stopTimer();
+                alert(`Congratulations! You won in ${moves} moves and ${document.getElementById('time').textContent} time.`);
                 //play win sound
             }
         } else {
@@ -76,7 +102,6 @@ const handleCardClick = (event) => {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
                 flippedCards = [];
-                //play wrong sound
             }, 1000);
         }
     }
@@ -90,7 +115,7 @@ levelBtns.forEach((btn) => {
 });
 
 const audioOfTheGame = document.querySelectorAll('audio');
-const volumeController = document.getElementById('sound-volume');
+const volumeController = document.getElementById('sound-valume');
 
 volumeController.addEventListener('input', () => {
     const volume = volumeController.value / 100;
