@@ -104,7 +104,7 @@ const handleCardClick = (event) => {
           //play match sound
           if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
               stopTimer();
-              alert(`Congratulations! You won in ${moves} moves and ${document.getElementById('time').textContent} seconds.`);
+              showWinMessageWithAnime();
               //play win sound
           }
       } else {
@@ -118,6 +118,42 @@ const handleCardClick = (event) => {
   }
 }
 
+
+
+
+const showWinMessageWithAnime = () => {
+  const winMessage = document.createElement('div');
+  winMessage.id = 'winMessage';
+  winMessage.textContent = `Congratulations.. you win after ${moves} moves`;
+  winMessage.style.position = 'absolute';
+  winMessage.style.top = '-100px';
+  winMessage.style.left = '50%';
+  winMessage.style.transform = 'translateX(-50%)';
+  winMessage.style.fontSize = '24px';
+  winMessage.style.color = '#ffcc00';
+  winMessage.style.fontWeight = 'bold';
+  winMessage.style.textAlign = 'center';
+  document.body.appendChild(winMessage);
+
+  
+  anime({
+      fontSize: '40px',
+      targets: winMessage,
+      top: '50px', 
+      duration: 1000,
+      easing: 'easeOutBounce', 
+      complete: () => {
+          setTimeout(() => {
+              anime({
+                  targets: winMessage,
+                  top: '-100px',
+                  duration: 800,
+                  easing: 'easeInQuad',
+              });
+          }, 7000);
+      }
+  });
+};
 const levelBtns = document.querySelectorAll('.level');
 levelBtns.forEach((btn) => {
   btn.addEventListener('click', (e) => {
