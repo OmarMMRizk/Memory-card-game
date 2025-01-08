@@ -50,6 +50,7 @@ const startGame = (level) => {
 }
 
 const handleCardClick = (event) => {
+    //play flip sound
     const clickedCard = event.target.closest('.card');
     if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) {
         return;
@@ -59,21 +60,23 @@ const handleCardClick = (event) => {
     flippedCards.push(clickedCard);
     if (flippedCards.length === 2) {
         moves++;
-        document.getElementById('moves').textContent = moves;
+        document.getElementById('moves').textContent = `Moves: ${moves}`;
 
         const [firstCard, secondCard] = flippedCards;
         if (firstCard.dataset.id === secondCard.dataset.id) {
             matchedCards.push(firstCard, secondCard);
             flippedCards = [];
+            //play match sound
             if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
-                clearInterval(timer);
                 alert(`Congratulations! You won in ${moves} moves and ${time} seconds.`);
+                //play win sound
             }
         } else {
             setTimeout(() => {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
                 flippedCards = [];
+                //play wrong sound
             }, 1000);
         }
     }
