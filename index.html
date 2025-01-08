@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Memory cards game</title>
-  </head>
-  <body>
+</head>
+<body>
     <header id="header">
         <div>
-            <span id="time">00:00</span>
+          <button id="reset" style="display: none;">Reset</button>
         </div>
-      <div>
-        <button id="reset" style="display: none">Reset</button>
-      </div>
-      <div class="left">
-        <button class="level" id="easy" value="easy">Easy</button>
-        <button class="level" id="medium" value="medium">Medium</button>
-        <button class="level" id="hard" value="hard">Hard</button>
-      </div>
-      <div class="middle">
+        <div class="left">
+            <button class="level"  id="easy" value="easy">Easy</button>
+            <button class="level"  id="medium" value="medium">Medium</button>
+            <button class="level"  id="hard" value="hard">Hard</button>
+        </div>
+        <div class="middle">
+            
         <span id="logo-of-the-game">Super Mario Match</span>
-      </div>
-      <div class="right">
-        <input type="range" id="sound-valume" name="audio of the game " />
-        <span id="moves">Moves: 00</span>
-        <span id="time">00:00</span>
-      </div>
+            
+        </div>
+        <div class="right">
+            <input type="range" id="sound-valume" name="audio of the game ">
+            <span id="moves">Moves: 00</span>
+            <span id="time"></span>
+        </div>
     </header>
-    <main id="game-play-content"></main>
+    <main id="game-play-content">
+       
+    </main>
 
     <div id="start-game"></div>
     <div id="winning-sound"></div>
 
-    <audio id="flipping-audio" src="assets/Audio/coin.mp3"></audio>
-    <audio id="matching-audio" src="assets/Audio/jump.mp3"></audio>
-    <audio id="winning-audio" src="assets/Audio/win.mp3"></audio>
-    <audio id="wrong-audio" src="assets/Audio/wrong.mp3"></audio>
+    <audio id ="flipping-audio" src="assets/Audio/coin.mp3"></audio>
+    <audio id = "matching-audio" src="assets/Audio/jump.mp3"></audio>
+    <audio id ="winning-audio" src="assets/Audio/win.mp3"></audio>
+    <audio id ="wrong-audio" src="assets/Audio/wrong.mp3"></audio>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
