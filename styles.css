@@ -32,20 +32,21 @@
 }
 
 body {
-    background: linear-gradient(to bottom, var(--primary-blue) 80%, var(--primary-blue) 20%);
-    height: 100vh;
+    background: linear-gradient(to bottom, var(--primary-blue) 80%, var(--primary-brown) 20%);
+    min-height: 100vh;
     color: var(--text-light);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 3rem;
 }
 header{
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     display: flex;
-    padding: 15px;
+    padding: 0.93rem;
     justify-content: space-between;
     align-items: center;
 }
@@ -53,24 +54,28 @@ header > .left > button{
     background-color: transparent;
     border: none;
     color: var(--text-light);
-    padding: 5px;
+    padding: 0.3rem;
     font-size: 1rem;
 }
 header > .left > button:hover {
     cursor: pointer;
 }
-main{
+main.grid-container{
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    height: 30rem;
+    gap: 1.25rem;
+    min-height: 30rem;
     width: 50rem;
-    background-color: var(--primary-green);
+    background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
 }
 
 main img{
-    width: 50px;
+    width: 3.75rem;
 }
   
 .card {
