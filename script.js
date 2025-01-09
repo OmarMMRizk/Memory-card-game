@@ -50,13 +50,18 @@ const startGame = (level) => {
   currentLevel = level;
     // Show the reset button
   document.getElementById('reset').style.display = 'inline-block';
+  const container = document.querySelector('main.grid-container');
+
   let cardNum;
   if(level === "easy"){
       cardNum = 12;
+      container.style.gridTemplateColumns = 'repeat(4, 1fr)';
   } else if(level === "medium"){
       cardNum = 16;
+      container.style.gridTemplateColumns = 'repeat(4, 1fr)';
   } else if(level === "hard"){
       cardNum = 20;
+      container.style.gridTemplateColumns = 'repeat(5, 1fr)';
   }
   const gameLevel = [...gameCards.slice(0, cardNum / 2), ...gameCards.slice(0, cardNum / 2)];
   gameLevel.sort(() => 0.5 - Math.random());

@@ -50,14 +50,14 @@ header{
     justify-content: space-between;
     align-items: center;
 }
-header > .left > button{
+button{
     background-color: transparent;
     border: none;
     color: var(--text-light);
     padding: 0.3rem;
     font-size: 1rem;
 }
-header > .left > button:hover {
+button:hover {
     cursor: pointer;
 }
 main.grid-container{
