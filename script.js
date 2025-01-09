@@ -24,11 +24,13 @@ const winningSound = document.getElementById('winning-audio');
 const mismatchingSound = document.getElementById('wrong-audio');
 
 function updateTimerDisplay() {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  const formattedTime = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-  document.getElementById('time').textContent = formattedTime;
-};
+  let minutes = Math.floor(seconds / 60);
+  let remainingSeconds = seconds % 60;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
+  document.getElementById('time').textContent = minutes + ":" + remainingSeconds;
+}
+
 
 function startTimer() {
   timer = setInterval(() => {
