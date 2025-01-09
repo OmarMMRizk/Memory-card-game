@@ -112,8 +112,12 @@ const handleCardClick = (event) => {
       if (firstCard.dataset.id === secondCard.dataset.id) {
           matchedCards.push(firstCard, secondCard);
           flippedCards = [];
+
           //play match sound
-          matchingSound.play();
+          setTimeout(()=>{
+            matchingSound.play();
+          }, 500)
+
           if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
               stopTimer();
               showWinMessageWithAnime();
