@@ -18,6 +18,11 @@ let timer;
 let seconds = 0;
 let currentLevel = null;
 
+const flippingSound = document.getElementById('flipping-audio');
+const matchingSound = document.getElementById('matching-audio');
+const winningSound = document.getElementById('winning-audio');
+const mismatchingSound = document.getElementById('wrong-audio');
+
 function updateTimerDisplay() {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
@@ -86,6 +91,8 @@ const startGame = (level) => {
 
 const handleCardClick = (event) => {
   //play flip sound
+    flippingSound.play();
+  
   const clickedCard = event.target.closest('.card');
   if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) {
       return;
@@ -102,10 +109,12 @@ const handleCardClick = (event) => {
           matchedCards.push(firstCard, secondCard);
           flippedCards = [];
           //play match sound
+          matchingSound.play();
           if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
               stopTimer();
               showWinMessageWithAnime();
               //play win sound
+              winningSound.play();
           }
       } else {
           setTimeout(() => {
@@ -113,6 +122,7 @@ const handleCardClick = (event) => {
               secondCard.classList.remove('flipped');
               flippedCards = [];
               //play wrong sound
+              mismatchingSound.play();
           }, 1000);
       }
   }
