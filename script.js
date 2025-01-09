@@ -1,4 +1,3 @@
-// Game cards 
 const gameCards = [
   { id: 1, src: 'assets/Game cards/dragon.png', name: "Dragon" },
   { id: 2, src: 'assets/Game cards/Flower.png', name: "Flower" },
@@ -12,7 +11,6 @@ const gameCards = [
   { id: 10, src: 'assets/Game cards/egg.png', name: "Egg" },
 ];
 
-// Game  variables
 let flippedCards = [];      
 let matchedCards = [];     
 let moves = 0;             
@@ -20,13 +18,11 @@ let seconds = 0;
 let currentLevel = null;    
 let activeTimer = null;     
 
-// Audio elements
 const flippingSound = document.getElementById('flipping-audio');
 const matchingSound = document.getElementById('matching-audio');
 const winningSound = document.getElementById('winning-audio');
 const mismatchingSound = document.getElementById('wrong-audio');
 
-// best score
 function saveBestScore(moves) {
   const bestScore = localStorage.getItem('bestScore');
   if (!bestScore || moves < bestScore) {
@@ -36,7 +32,6 @@ function saveBestScore(moves) {
   return false;
 }
 
-// Update timer 
 function updateTimerDisplay() {
   let minutes = Math.floor(seconds / 60);
   let remainingSeconds = seconds % 60;
@@ -45,7 +40,6 @@ function updateTimerDisplay() {
   document.getElementById('time').textContent = `${minutes}:${remainingSeconds}`;
 }
 
-// Start and restart timer 
 function startTimer() {
   if (activeTimer) {
     clearInterval(activeTimer);
@@ -58,7 +52,6 @@ function startTimer() {
   }, 1000);
 }
 
-// Stop timer 
 function stopTimer() {
   if (activeTimer) {
     clearInterval(activeTimer);
@@ -66,20 +59,17 @@ function stopTimer() {
   }
 }
 
-// Reset game 
 function resetGame() {
   stopTimer();
   startGame(currentLevel);
   document.getElementById('moves').textContent = `Moves: 0`;
 }
 
-// levels
 const startGame = (level) => {
   currentLevel = level;
   document.getElementById('reset').style.display = 'inline-block';
   const container = document.querySelector('main.grid-container');
 
-  // level grid
   let cardNum;
   if (level === "easy") {
       cardNum = 12;
@@ -92,7 +82,6 @@ const startGame = (level) => {
       container.style.gridTemplateColumns = 'repeat(5, 1fr)';
   }
 
-  //  shuffled cards
   const gameLevel = [...gameCards.slice(0, cardNum / 2), ...gameCards.slice(0, cardNum / 2)];
   gameLevel.sort(() => 0.5 - Math.random());
 
@@ -155,24 +144,47 @@ const handleCardClick = (event) => {
   }
 };
 
-//  win message with animation
 const showWinMessageWithAnime = () => {
-  const isHighScore = saveBestScore(moves);
+  const HighScore = saveBestScore(moves);
   const winMessage = document.createElement('div');
   winMessage.id = 'winMessage';
-  const bestScoreMessage = isHighScore ? " It's the best score in the game!" : "";
+  const bestScoreMessage = HighScore ? " It's the best score in the game!" : "";
   winMessage.textContent = `Congratulations!.. you won after ${moves} moves!${bestScoreMessage}`;
+  winMessage.style.position = 'absolute';
+  winMessage.style.top = '-100px';
+  winMessage.style.left = '50%';
+  winMessage.style.transform = 'translateX(-50%)';
+  winMessage.style.fontSize = '24px';
+  winMessage.style.color = '#ffcc00';
+  winMessage.style.fontWeight = 'bold';
+  winMessage.style.textAlign = 'center';
+  winMessage.style.padding = '1rem';
+  winMessage.style.backgroundColor = '#333';
+  winMessage.style.borderRadius = '8px';
+  winMessage.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
   document.body.appendChild(winMessage);
-  winMessage.classList.add('show');
 
-  setTimeout(() => {
-      winMessage.classList.remove('show');
+  anime({
+    targets: winMessage,
+    top: '50px',
+    fontSize: '30px',
+    duration: 1000,
+    easing: 'easeOutBounce',
+    complete: () => {
       setTimeout(() => {
-          winMessage.remove()
-      }, 800);
-  }, 7000);
+        anime({
+          targets: winMessage,
+          top: '-100px',
+          duration: 800,
+          easing: 'easeInQuad',
+          complete: () => {
+            winMessage.remove();
+          },
+        });
+      }, 7000);
+    },
+  });
 };
-
 
 const levelBtns = document.querySelectorAll('.level');
 levelBtns.forEach((btn) => {
@@ -181,11 +193,9 @@ levelBtns.forEach((btn) => {
   });
 });
 
-//reset event listner
 const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', resetGame);
 
-// Volume control 
 const audioOfTheGame = document.querySelectorAll('audio');
 const volumeController = document.getElementById('sound-valume');
 
