@@ -74,7 +74,11 @@ main.grid-container{
     justify-content: center;
 }
 
-main img{
+main.grid-container> div {
+    align-self: center;
+    margin: auto;
+}
+main > div > img{
     width: 3.75rem;
 }
   
@@ -107,11 +111,6 @@ main img{
     transform: rotateY(180deg); 
 }
 
-
-.card:hover {
-    transform: scale(1.3);
-  
-}
 
 #winMessage {
     margin-top: 200px;

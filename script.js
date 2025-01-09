@@ -92,7 +92,8 @@ const startGame = (level) => {
 const handleCardClick = (event) => {
   //play flip sound
     flippingSound.play();
-  
+    moves++;
+    document.getElementById('moves').textContent = `Moves: ${moves}`;
   const clickedCard = event.target.closest('.card');
   if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) {
       return;
@@ -101,8 +102,6 @@ const handleCardClick = (event) => {
   clickedCard.classList.add('flipped');
   flippedCards.push(clickedCard);
   if (flippedCards.length === 2) {
-      moves++;
-      document.getElementById('moves').textContent = `Moves: ${moves}`;
 
       const [firstCard, secondCard] = flippedCards;
       if (firstCard.dataset.id === secondCard.dataset.id) {
@@ -134,7 +133,7 @@ const handleCardClick = (event) => {
 const showWinMessageWithAnime = () => {
   const winMessage = document.createElement('div');
   winMessage.id = 'winMessage';
-  winMessage.textContent = `Congratulations.. you win after ${moves} moves`;
+  winMessage.textContent = `Congratulations!.. you won after ${moves} moves!`;
   winMessage.style.position = 'absolute';
   winMessage.style.top = '-100px';
   winMessage.style.left = '50%';
@@ -143,6 +142,7 @@ const showWinMessageWithAnime = () => {
   winMessage.style.color = '#ffcc00';
   winMessage.style.fontWeight = 'bold';
   winMessage.style.textAlign = 'center';
+  winMessage.style.padding = '1rem';
   document.body.appendChild(winMessage);
 
   
