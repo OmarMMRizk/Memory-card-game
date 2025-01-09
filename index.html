@@ -8,6 +8,9 @@
 </head>
 <body>
     <header id="header">
+        <div>
+          <button id="reset" style="display: none;">Reset</button>
+        </div>
         <div class="left">
             <button class="level"  id="easy" value="easy">Easy</button>
             <button class="level"  id="medium" value="medium">Medium</button>
@@ -19,9 +22,9 @@
             
         </div>
         <div class="right">
-            <span id="time">00:00</span>
-            <input type="range"  name="audio of the game ">
+            <input type="range" id="sound-valume" name="audio of the game ">
             <span id="moves">Moves: 00</span>
+            <span id="time"></span>
         </div>
     </header>
     <main id="game-play-content" class="grid-container">
@@ -32,13 +35,13 @@
     <div id="winning-sound"></div>
 
 
-
-    <audio id ="flipping-audio" src="./assets/Game cards/"></audio>
-    <audio id = "matching-audio" src="#.mp3"></audio>
-    <audio id ="winning-audio" src="#.mp3"></audio>
-
+    <audio id ="flipping-audio" src="assets/Audio/jump.mp3"></audio>
+    <audio id = "matching-audio" src="assets/Audio/coin.mp3"></audio>
+    <audio id ="winning-audio" src="assets/Audio/win.mp3"></audio>
+    <audio id ="wrong-audio" src="assets/Audio/wrong.mp3"></audio>
 
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
 </body>
 </html>
