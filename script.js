@@ -46,6 +46,7 @@ function stopTimer() {
 function resetGame() {
   stopTimer();
   startGame(currentLevel);
+  document.getElementById('moves').textContent = `Moves: 0`;
 }
 
 const startGame = (level) => {
