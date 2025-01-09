@@ -166,6 +166,7 @@ const showWinMessageWithAnime = () => {
       complete: () => {
           setTimeout(() => {
               anime({
+                winMessage: winMessage.remove(),
                   targets: winMessage,
                   top: '-100px',
                   duration: 800,
