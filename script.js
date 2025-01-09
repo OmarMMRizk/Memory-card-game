@@ -1,71 +1,98 @@
+// Game cards 
 const gameCards = [
-  { id: 1, src: 'assets/Game cards/dragon.png', name:"Dragon" },
-  { id: 2, src: 'assets/Game cards/Flower.png', name:"Flower" },
-  { id: 3, src: 'assets/Game cards/lugi.png', name:"Lugi" },
-  { id: 4, src: 'assets/Game cards/mario.png', name:"Mario" },
-  { id: 5, src: 'assets/Game cards/mushroom.png', name:"Mushroom" },
-  { id: 6, src: 'assets/Game cards/princess.png', name:"Princess" },
-  { id: 7, src: 'assets/Game cards/superloser.png', name:"Superloser" },
-  { id: 8, src: 'assets/Game cards/tine.png', name:"Tine" },
-  { id: 9, src: 'assets/Game cards/coin.png', name:"Coin" },
-  { id: 10, src: 'assets/Game cards/egg.png', name:"Egg" },
+  { id: 1, src: 'assets/Game cards/dragon.png', name: "Dragon" },
+  { id: 2, src: 'assets/Game cards/Flower.png', name: "Flower" },
+  { id: 3, src: 'assets/Game cards/lugi.png', name: "Lugi" },
+  { id: 4, src: 'assets/Game cards/mario.png', name: "Mario" },
+  { id: 5, src: 'assets/Game cards/mushroom.png', name: "Mushroom" },
+  { id: 6, src: 'assets/Game cards/princess.png', name: "Princess" },
+  { id: 7, src: 'assets/Game cards/superloser.png', name: "Superloser" },
+  { id: 8, src: 'assets/Game cards/tine.png', name: "Tine" },
+  { id: 9, src: 'assets/Game cards/coin.png', name: "Coin" },
+  { id: 10, src: 'assets/Game cards/egg.png', name: "Egg" },
 ];
 
-let flippedCards = [];
-let matchedCards = [];
-let moves = 0;
-let timer;
-let seconds = 0;
-let currentLevel = null;
+// Game  variables
+let flippedCards = [];      
+let matchedCards = [];     
+let moves = 0;             
+let seconds = 0;          
+let currentLevel = null;    
+let activeTimer = null;     
 
+// Audio elements
 const flippingSound = document.getElementById('flipping-audio');
 const matchingSound = document.getElementById('matching-audio');
 const winningSound = document.getElementById('winning-audio');
 const mismatchingSound = document.getElementById('wrong-audio');
 
+// best score
+function saveBestScore(moves) {
+  const bestScore = localStorage.getItem('bestScore');
+  if (!bestScore || moves < bestScore) {
+      localStorage.setItem('bestScore', moves);
+      return true; 
+  }
+  return false;
+}
+
+// Update timer 
 function updateTimerDisplay() {
   let minutes = Math.floor(seconds / 60);
   let remainingSeconds = seconds % 60;
   minutes = minutes < 10 ? '0' + minutes : minutes;
   remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
-  document.getElementById('time').textContent = minutes + ":" + remainingSeconds;
+  document.getElementById('time').textContent = `${minutes}:${remainingSeconds}`;
 }
 
-
+// Start and restart timer 
 function startTimer() {
-  timer = setInterval(() => {
-      seconds++;
-      updateTimerDisplay();
+  if (activeTimer) {
+    clearInterval(activeTimer);
+  }
+  seconds = 0;
+  updateTimerDisplay();
+  activeTimer = setInterval(() => {
+    seconds++;
+    updateTimerDisplay();
   }, 1000);
-};
+}
 
+// Stop timer 
 function stopTimer() {
-  clearInterval(timer);
-};
+  if (activeTimer) {
+    clearInterval(activeTimer);
+    activeTimer = null;
+  }
+}
 
+// Reset game 
 function resetGame() {
   stopTimer();
   startGame(currentLevel);
   document.getElementById('moves').textContent = `Moves: 0`;
 }
 
+// levels
 const startGame = (level) => {
   currentLevel = level;
-    // Show the reset button
   document.getElementById('reset').style.display = 'inline-block';
   const container = document.querySelector('main.grid-container');
 
+  // level grid
   let cardNum;
-  if(level === "easy"){
+  if (level === "easy") {
       cardNum = 12;
       container.style.gridTemplateColumns = 'repeat(4, 1fr)';
-  } else if(level === "medium"){
+  } else if (level === "medium") {
       cardNum = 16;
       container.style.gridTemplateColumns = 'repeat(4, 1fr)';
-  } else if(level === "hard"){
+  } else if (level === "hard") {
       cardNum = 20;
       container.style.gridTemplateColumns = 'repeat(5, 1fr)';
   }
+
+  //  shuffled cards
   const gameLevel = [...gameCards.slice(0, cardNum / 2), ...gameCards.slice(0, cardNum / 2)];
   gameLevel.sort(() => 0.5 - Math.random());
 
@@ -83,48 +110,38 @@ const startGame = (level) => {
       gameGrid.appendChild(cardElement);
   });
 
+ 
   const allCards = document.querySelectorAll('.card');
   allCards.forEach((card) => card.addEventListener('click', handleCardClick));
-  
-   // Reset everything when starting a new game
   flippedCards = [];
   matchedCards = [];
   moves = 0;
-  seconds = 0;
-  updateTimerDisplay();
-  
-  //Start Timer
   startTimer();
 };
 
+// Handle card click logic
 const handleCardClick = (event) => {
-  //play flip sound
-    flippingSound.play();
-    moves++;
-    document.getElementById('moves').textContent = `Moves: ${moves}`;
+  flippingSound.play();
   const clickedCard = event.target.closest('.card');
-  if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) {
-      return;
-  }
+  if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) return;
 
   clickedCard.classList.add('flipped');
   flippedCards.push(clickedCard);
+
   if (flippedCards.length === 2) {
+      moves++;
+      document.getElementById('moves').textContent = `Moves: ${moves}`;
 
       const [firstCard, secondCard] = flippedCards;
+
       if (firstCard.dataset.id === secondCard.dataset.id) {
           matchedCards.push(firstCard, secondCard);
           flippedCards = [];
-
-          //play match sound
-          setTimeout(()=>{
-            matchingSound.play();
-          }, 500)
+          matchingSound.play();
 
           if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
               stopTimer();
               showWinMessageWithAnime();
-              //play win sound
               winningSound.play();
           }
       } else {
@@ -132,51 +149,31 @@ const handleCardClick = (event) => {
               firstCard.classList.remove('flipped');
               secondCard.classList.remove('flipped');
               flippedCards = [];
-              //play wrong sound
               mismatchingSound.play();
           }, 1000);
       }
   }
-}
+};
 
-
-
-
+//  win message with animation
 const showWinMessageWithAnime = () => {
+  const isHighScore = saveBestScore(moves);
   const winMessage = document.createElement('div');
   winMessage.id = 'winMessage';
-  winMessage.textContent = `Congratulations!.. you won after ${moves} moves!`;
-  winMessage.style.position = 'absolute';
-  winMessage.style.top = '-100px';
-  winMessage.style.left = '50%';
-  winMessage.style.transform = 'translateX(-50%)';
-  winMessage.style.fontSize = '24px';
-  winMessage.style.color = '#ffcc00';
-  winMessage.style.fontWeight = 'bold';
-  winMessage.style.textAlign = 'center';
-  winMessage.style.padding = '1rem';
+  const bestScoreMessage = isHighScore ? " It's the best score in the game!" : "";
+  winMessage.textContent = `Congratulations!.. you won after ${moves} moves!${bestScoreMessage}`;
   document.body.appendChild(winMessage);
+  winMessage.classList.add('show');
 
-  
-  anime({
-      fontSize: '40px',
-      targets: winMessage,
-      top: '50px', 
-      duration: 1000,
-      easing: 'easeOutBounce', 
-      complete: () => {
-          setTimeout(() => {
-              anime({
-                winMessage: winMessage.remove(),
-                  targets: winMessage,
-                  top: '-100px',
-                  duration: 800,
-                  easing: 'easeInQuad',
-              });
-          }, 7000);
-      }
-  });
+  setTimeout(() => {
+      winMessage.classList.remove('show');
+      setTimeout(() => {
+          winMessage.remove()
+      }, 800);
+  }, 7000);
 };
+
+
 const levelBtns = document.querySelectorAll('.level');
 levelBtns.forEach((btn) => {
   btn.addEventListener('click', (e) => {
@@ -184,9 +181,11 @@ levelBtns.forEach((btn) => {
   });
 });
 
+//reset event listner
 const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', resetGame);
 
+// Volume control 
 const audioOfTheGame = document.querySelectorAll('audio');
 const volumeController = document.getElementById('sound-valume');
 
