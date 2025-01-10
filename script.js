@@ -140,7 +140,9 @@ const handleCardClick = (event) => {
           flippedCards = [];
           matchingSound.play();
           firstCard.removeEventListener('click',handleCardClick);
+          firstCard.style.cursor = 'context-menu';
           secondCard.removeEventListener('click',handleCardClick);
+          secondCard.style.cursor = 'context-menu';
           if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
               stopTimer();
               showWinMessageWithAnime();
