@@ -50,6 +50,12 @@ header{
     justify-content: space-between;
     align-items: center;
 }
+i.volume-icon{
+    font-size: 24px;
+}
+i.volume-icon:hover{
+    cursor: pointer;
+}
 button{
     background-color: transparent;
     border: none;
