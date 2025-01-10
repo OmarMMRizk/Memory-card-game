@@ -139,9 +139,6 @@ const handleCardClick = (event) => {
   }
 }
 
-
-
-
 const showWinMessageWithAnime = () => {
   const winMessage = document.createElement('div');
   winMessage.id = 'winMessage';
@@ -159,7 +156,7 @@ const showWinMessageWithAnime = () => {
 
   
   anime({
-      fontSize: '40px',
+      fontSize: '25px',
       targets: winMessage,
       top: '50px', 
       duration: 1000,
