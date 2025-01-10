@@ -15,7 +15,7 @@ let flippedCards = [];
 let matchedCards = [];     
 let moves = 0;             
 let seconds = 0;          
-let currentLevel = null;    
+let currentLevel = 'easy';    //default mode
 let activeTimer = null;     
 
 const flippingSound = document.getElementById('flipping-audio');
@@ -107,6 +107,18 @@ const startGame = (level) => {
   moves = 0;
   startTimer();
 };
+
+// starting the game with easy mode as default
+
+window.addEventListener("load", (e) => {
+  const popup = document.querySelector('#start-game');
+  popup.style.display='block';
+  const startButton = document.querySelector('#start-button');
+  startButton.addEventListener('click',()=>{
+  popup.style.display='none';
+  startGame(currentLevel);
+})
+});
 
 // Handle card click logic
 const handleCardClick = (event) => {

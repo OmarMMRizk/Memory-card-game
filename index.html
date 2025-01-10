@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/6622e4a722.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Memory cards game</title>
 </head>
@@ -33,7 +34,27 @@
        
     </main>
 
-    <div id="start-game"></div>
+    <div id="start-game">
+        <div class="popup-content">
+            <h1>How to play?</h1>
+            <ul>
+                <li><i class="fa-solid fa-caret-right"></i> Flip two cards to reveal them.</li>
+                <li><i class="fa-solid fa-caret-right"></i> Match pairs of cards to keep them face-up.</li>
+                <li><i class="fa-solid fa-caret-right"></i> Match all pairs to win the game!</li>
+                <li><i class="fa-solid fa-caret-right"></i> Win in fewer moves to set a new high score!</li>
+            </ul>
+            <p>Note: You can change difficulty mode while playing but that will restart the game.
+               Default difficulty mode is easy.</p>
+            <p>Good luck! 🎮</p>
+            <div class="left">
+                <p>Pick a level then press start!</p>
+                <button class="level"  id="easy" value="easy">Easy</button>
+                <button class="level"  id="medium" value="medium">Medium</button>
+                <button class="level"  id="hard" value="hard">Hard</button>
+            </div>
+            <button id="start-button">Start</button>
+        </div>
+    </div>
     <div id="winning-sound"></div>
 
 
