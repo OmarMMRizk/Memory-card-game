@@ -217,3 +217,26 @@ volumeController.addEventListener('input', () => {
       audio.volume = volume;
   });
 });
+
+//applying mute feature to volume icon
+const vIcon = document.querySelector('i.volume-icon');
+vIcon.addEventListener('click',(e)=>{
+  if(vIcon.classList.contains('fa-volume-high')){
+
+      console.log('mute');
+      vIcon.classList.remove('fa-volume-high');
+      vIcon.classList.add('fa-volume-xmark');
+      audioOfTheGame.forEach(audio => {
+        audio.volume = 0;
+    });
+    volumeController.value = 0;
+  } else {
+    console.log('unmute');
+    vIcon.classList.remove('fa-volume-xmark');
+    vIcon.classList.add('fa-volume-high');
+    audioOfTheGame.forEach(audio => {
+      audio.volume = 0.5;
+  });
+  volumeController.value = 50;
+  }
+})
