@@ -119,3 +119,15 @@ main > div > img{
     background-color: white;
     font-weight: 600;
 }
+
+/* div#start-game{
+    position: fixed;
+} */
+
+/*
+for styling the popup:
+- make sure the start-game div has a background or blurring effect that hides what's behind it.
+- take into consideration the light height between the content.
+- also note that any styling to the level buttons without specifying the selectors will also change the
+styles for the level buttons inside the game (they're the same html).
+*/
