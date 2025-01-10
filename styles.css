@@ -50,6 +50,12 @@ header{
     justify-content: space-between;
     align-items: center;
 }
+i.volume-icon{
+    font-size: 24px;
+}
+i.volume-icon:hover{
+    cursor: pointer;
+}
 button{
     background-color: transparent;
     border: none;
@@ -118,4 +124,78 @@ main > div > img{
     font-family: "Press Start 2P", serif;
     background-color: white;
     font-weight: 600;
+}
+
+div#start-game{
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    max-height: 500px;
+    min-width: 300px;
+    z-index: 10000;
+    position: fixed;
+    text-align: center;
+    background-color: blueviolet;
+    height: 400px;
+    width: 80%;
+    border-radius: 12px;
+    border: 2px solid orangered;
+}
+div#start-game > div > ul > li {
+    color: blue;
+    margin-top: 15px;
+   
+}
+div#start-game > div > p {
+    margin-top: 15px;
+    color: yellow;
+    font-family: fantasy;
+}
+div#start-game > div > div > p {
+    margin-top: 15px;
+  
+}
+
+div#start-game > div >  .left{
+    margin-top: 10px;
+    color: blue;
+    font-family: fantasy;
+    font-weight: boldS;
+}
+
+div#start-game > div >  .left > #easy {
+    margin-top: 20px;
+    color: green;
+    font-family: fantasy;
+}
+div#start-game > div >  .left > #medium {
+    margin-top: 20px;
+    color: orange;
+    font-family: fantasy;
+}
+div#start-game > div >  .left > #hard {
+    margin-top: 20px;
+    color: red;
+    font-family: fantasy;
+}
+
+h1 {
+    color: Black;
+    font-weight: bold;
+    margin-top: 20px;
+}
+#start-button {
+    margin-top: 20px;
+    background-color: orangered;
+    text-align: center;
+    width: 200px;
+    color: white;
+    border-radius: 12px;
+}
+
+#start-button:hover {
+    background-color: white;
+    color: black;
+    width: 240px;
+    
 }
