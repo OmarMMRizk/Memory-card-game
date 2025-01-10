@@ -139,7 +139,8 @@ const handleCardClick = (event) => {
           matchedCards.push(firstCard, secondCard);
           flippedCards = [];
           matchingSound.play();
-
+          firstCard.removeEventListener('click',handleCardClick);
+          secondCard.removeEventListener('click',handleCardClick);
           if (matchedCards.length === document.querySelector('#game-play-content').children.length) {
               stopTimer();
               showWinMessageWithAnime();
@@ -223,7 +224,6 @@ const vIcon = document.querySelector('i.volume-icon');
 vIcon.addEventListener('click',(e)=>{
   if(vIcon.classList.contains('fa-volume-high')){
 
-      console.log('mute');
       vIcon.classList.remove('fa-volume-high');
       vIcon.classList.add('fa-volume-xmark');
       audioOfTheGame.forEach(audio => {
@@ -231,7 +231,6 @@ vIcon.addEventListener('click',(e)=>{
     });
     volumeController.value = 0;
   } else {
-    console.log('unmute');
     vIcon.classList.remove('fa-volume-xmark');
     vIcon.classList.add('fa-volume-high');
     audioOfTheGame.forEach(audio => {
