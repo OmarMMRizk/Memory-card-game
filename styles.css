@@ -32,7 +32,10 @@
 }
 
 body {
-    background: linear-gradient(to bottom, var(--primary-blue) 80%, var(--primary-brown) 20%);
+    background-image: url('./assets/Game cards/mainBackgroung.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
     min-height: 100vh;
     color: var(--text-light);
     display: flex;
