@@ -126,61 +126,90 @@ main > div > img{
     font-weight: 600;
 }
 
+
+
 div#start-game{
+    background-image: url('./assets/Game cards/backgroundimage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%);
-    max-height: 500px;
-    min-width: 300px;
+    height: 100%;
     z-index: 10000;
     position: fixed;
     text-align: center;
-    background-color: blueviolet;
-    height: 400px;
-    width: 80%;
-    border-radius: 12px;
-    border: 2px solid orangered;
+    width: 100%;
 }
 div#start-game > div > ul > li {
-    color: blue;
-    margin-top: 15px;
-   
+    color: var(--text-light);
+    margin-top: 30px;
+}
+div#start-game > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.4);
 }
 div#start-game > div > p {
     margin-top: 15px;
     color: yellow;
-    font-family: fantasy;
+    font-family: "Press Start 2P", serif;
+     line-height: 30px;
 }
+
 div#start-game > div > div > p {
     margin-top: 15px;
   
 }
 
+.popup-content > .first-p , .good-luck-p{
+ width: 75%;
+}
 div#start-game > div >  .left{
     margin-top: 10px;
-    color: blue;
-    font-family: fantasy;
-    font-weight: boldS;
+    color: var(--text-light);
+    font-weight: bold;
 }
 
 div#start-game > div >  .left > #easy {
     margin-top: 20px;
-    color: green;
-    font-family: fantasy;
+    font-weight: bold;
+
+    color: white;
+    background-color: var(--primary-blue);
+    border: 0.5 solid black;
+    border-radius: 5px;
+    padding: 10px;
 }
 div#start-game > div >  .left > #medium {
     margin-top: 20px;
-    color: orange;
-    font-family: fantasy;
+    font-weight: bold;
+    color: white;
+    background-color: var(--primary-blue);
+    border: 0.5 solid black;
+    border-radius: 5px;
+    padding: 10px;
 }
 div#start-game > div >  .left > #hard {
     margin-top: 20px;
-    color: red;
-    font-family: fantasy;
+    font-weight: bold;
+    color: white;
+    background-color: var(--primary-blue);
+    border: 0.5 solid black;
+    border-radius: 5px;
+    padding: 10px;
+  
 }
 
 h1 {
-    color: Black;
+    border-radius: 12px;
+    padding: 20px 30px;
+    background-color: var(--primary-brown);
+    color: var(--highlight-yellow);
     font-weight: bold;
     margin-top: 20px;
 }
@@ -191,6 +220,7 @@ h1 {
     width: 200px;
     color: white;
     border-radius: 12px;
+    padding: 10px ;
 }
 
 #start-button:hover {
