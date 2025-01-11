@@ -138,7 +138,9 @@ const handleCardClick = (event) => {
       if (firstCard.dataset.id === secondCard.dataset.id) {
           matchedCards.push(firstCard, secondCard);
           flippedCards = [];
-          matchingSound.play();
+          setTimeout(()=>{
+            matchingSound.play();
+          }, 600)
           firstCard.removeEventListener('click',handleCardClick);
           firstCard.style.cursor = 'default';
           secondCard.removeEventListener('click',handleCardClick);
