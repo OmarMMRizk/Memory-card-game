@@ -170,12 +170,25 @@ const handleCardClick = (event) => {
 };
 
 const showWinMessageWithAnime = () => {
+  const tryAgainBtn = document.createElement('button');
   const winMessage = document.createElement('div');
+  winMessage.style.display = 'flex';
+  winMessage.style.flexDirection = 'column';
+  winMessage.style.justifyContent = 'center';
+  winMessage.style.justifyContent = 'center';
   winMessage.id = 'winMessage';
-
+  tryAgainBtn.textContent = 'Try Again !';
+  tryAgainBtn.style.border = '1px solid black';
+  tryAgainBtn.style.padding = '10px 20px';
+  tryAgainBtn.style.marginTop = '10px';
+  tryAgainBtn.style.cursor = 'pointer';
+  tryAgainBtn.style.backgroundColor = '#eeaf36';
+  tryAgainBtn.style.fontWeight = 'bold';
+  tryAgainBtn.style.borderRadius = '8px';
+  tryAgainBtn.classList.add('tryAgainBtn'); 
   let HighScore = saveBestScore(moves);
   let bestScoreMessage = HighScore ? " It's the best score in the game!" : "";
-
+  winMessage.style.height = '200px';
   winMessage.textContent = `Congratulations!.. you won after ${moves} moves!${bestScoreMessage}`;
   winMessage.style.position = 'absolute';
   winMessage.style.top = '-100px';
@@ -190,7 +203,9 @@ const showWinMessageWithAnime = () => {
   winMessage.style.borderRadius = '8px';
   winMessage.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
   document.body.appendChild(winMessage);
+  winMessage.appendChild(tryAgainBtn);
 
+  
   anime({
     targets: winMessage,
     top: '50px',
@@ -210,6 +225,11 @@ const showWinMessageWithAnime = () => {
         });
       }, 7000);
     },
+  });
+
+  tryAgainBtn.addEventListener('click', () => {
+    winMessage.remove();
+    resetGame(); 
   });
 };
 
