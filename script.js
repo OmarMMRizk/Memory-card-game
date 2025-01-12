@@ -23,6 +23,7 @@ const matchingSound = document.getElementById('matching-audio');
 const winningSound = document.getElementById('winning-audio');
 const mismatchingSound = document.getElementById('wrong-audio');
 
+//best score
 function saveBestScore(moves) {
   const bestScore = localStorage.getItem('bestScore');
   if (!bestScore || moves < bestScore) {
@@ -32,12 +33,20 @@ function saveBestScore(moves) {
   return false;
 }
 
+//timer
 function updateTimerDisplay() {
   let minutes = Math.floor(seconds / 60);
   let remainingSeconds = seconds % 60;
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
-  document.getElementById('time').textContent = `${minutes}:${remainingSeconds}`;
+
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  if (remainingSeconds < 10) {
+    remainingSeconds = "0" + remainingSeconds;
+  }
+
+  var timeElement = document.getElementById("time");
+  timeElement.textContent = minutes + ":" + remainingSeconds;
 }
 
 function startTimer() {
@@ -59,6 +68,7 @@ function stopTimer() {
   }
 }
 
+//reset
 function resetGame() {
   stopTimer();
   startGame(currentLevel);
@@ -138,9 +148,7 @@ const handleCardClick = (event) => {
       if (firstCard.dataset.id === secondCard.dataset.id) {
           matchedCards.push(firstCard, secondCard);
           flippedCards = [];
-          setTimeout(()=>{
-            matchingSound.play();
-          }, 600)
+          matchingSound.play();
           firstCard.removeEventListener('click',handleCardClick);
           firstCard.style.cursor = 'default';
           secondCard.removeEventListener('click',handleCardClick);
@@ -162,10 +170,12 @@ const handleCardClick = (event) => {
 };
 
 const showWinMessageWithAnime = () => {
-  const HighScore = saveBestScore(moves);
   const winMessage = document.createElement('div');
   winMessage.id = 'winMessage';
-  const bestScoreMessage = HighScore ? " It's the best score in the game!" : "";
+
+  let HighScore = saveBestScore(moves);
+  let bestScoreMessage = HighScore ? " It's the best score in the game!" : "";
+
   winMessage.textContent = `Congratulations!.. you won after ${moves} moves!${bestScoreMessage}`;
   winMessage.style.position = 'absolute';
   winMessage.style.top = '-100px';

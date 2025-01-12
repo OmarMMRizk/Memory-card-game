@@ -238,3 +238,28 @@ h1 {
     width: 240px;
     
 }
+
+
+/* For tablets (width : 768px) */
+@media (max-width: 768px) {
+    main.grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        width: 90%;
+    }
+    .card {
+        width: 80px;
+        height: 120px;
+    }
+}
+
+/* For mobile phones (width : 480px) */
+@media (max-width: 480px) {
+    main.grid-container {
+        grid-template-columns: 1fr;
+    }
+    .card {
+        width: 60px;
+        height: 100px;
+    }
+}
+
