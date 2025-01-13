@@ -132,6 +132,8 @@ window.addEventListener("load", (e) => {
 
 // Handle card click logic
 const handleCardClick = (event) => {
+  if (flippedCards.length === 2) return;
+  
   flippingSound.play();
   const clickedCard = event.target.closest('.card');
   if (!clickedCard || flippedCards.includes(clickedCard) || matchedCards.includes(clickedCard)) return;
