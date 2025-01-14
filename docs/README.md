@@ -44,20 +44,12 @@ Contributions are welcome! If you have ideas or suggestions, feel free to open a
 
 
 # 🤝 Team Members
-&nbsp;&nbsp;_Menna Rashad_ &nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; _Abdo Hasan_ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    | &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  _Omar Mohamed_ &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;_Omar Mamdouh_ &nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;_Menna Rashad_ &nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; _Abdo Hasan_ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    | &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  _Omar Mohamed_ &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;_Omar Mamdouh_ &nbsp;&nbsp;&nbsp;
 
+&nbsp;&nbsp;&nbsp;<img src="static/menna.jpeg" alt="menna rashed" width="100"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<img src="./static/abdo.jpg" alt="abdo" width="100"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./static/omar mohamed.jpg" alt="omar mohamed" width="100" style="margin-right:40px;">  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./static/omar mamdouh.jpg" alt="omar mamdoouh" width="100" > 
 
-<br>
-<img src="static/menna.jpeg" alt="menna rashed" width="100" style="margin-right:25px;>
-
-<img src="./static/abdo.jpg" alt="abdo" width="100" style="margin-right:25px;"> &nbsp;&nbsp;&nbsp; 
-<img src="./static/omar mohamed.jpg" alt="omar mohamed" width="100" style="margin-right:40px;"> 
-<img src="./static/omar mamdouh.jpg" alt="omar mamdoouh" width="100" >  
-
-<br>
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mennarashad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mennarashad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abdelrhman-hasan-945428279/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/omar-mohamed-a68a64b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
