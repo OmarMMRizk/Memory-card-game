@@ -32,7 +32,7 @@
 }
 
 body {
-    background-image: url('./assets/Game cards/mainBackgroung.png');
+    background-image: url('./assets/Game cards/mainBG.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -79,14 +79,15 @@ main.grid-container{
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    min-height: 30rem;
+    gap: 1rem;
+    height: 33rem;
     width: 50rem;
     background-color: rgba(0,0,0,0.3);
     backdrop-filter: blur(10px);
     padding: 1.5rem;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
 main.grid-container> div {
@@ -98,8 +99,8 @@ main > div > img{
 }
   
 .card {
-    width: 100px;
-    height: 140px;
+    width: 75px;
+    height: 100px;
     position: relative;
     transform-style: preserve-3d; 
     transition: transform 0.6s; 
@@ -245,12 +246,6 @@ div#start-game > div > .left > #easy:hover {
     color: var(--primary-blue);
 }
 
-{
-    background-color: rgb(255, 255, 255);
-    color: var(--primary-blue);
-  
-}
-
 /* For tablets (width : 768px) */
 @media (max-width: 768px) {
     main.grid-container {
@@ -273,4 +268,5 @@ div#start-game > div > .left > #easy:hover {
         height: 100px;
     }
 }
+
 
